@@ -278,6 +278,8 @@ exports.setSources = setSources;
 function initControls() {
     source1Input.addEventListener('keydown', onInputChange);
     source2Input.addEventListener('keydown', onInputChange);
+    source1Input.addEventListener('paste', () => setTimeout(onInputChange, 0));
+    source2Input.addEventListener('paste', () => setTimeout(onInputChange, 0));
     sourceForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (updateButton.disabled)
