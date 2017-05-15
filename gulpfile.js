@@ -1,4 +1,4 @@
-if(process.env.TARGET_ENV == 'production') {
+if(process.env.NODE_ENV == 'production') {
   console.log('Loading prod gulpfile.');
   require('./gulp/prod.gulpfile');
 } else {
