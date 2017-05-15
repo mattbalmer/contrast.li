@@ -8,7 +8,11 @@ function parseId(string: string) {
 function requestAlbumImages(sources) {
   let ids: Array<string> = sources.map(s => parseId(s));
   let requests: Array<Promise<HttpResponse>> = ids.map((id: string) => {
-    return http.get(`/album/${id}`, {});
+    return http.get(`/album/${id}`, {
+      params: {
+        force: window['forceCacheBuster'] || false
+      }
+    });
   });
 
   return Promise.all(requests)
