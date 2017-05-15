@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=false">
+  <title>contrast.li</title>
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/css/main.css">
+  <!-- endinject -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-99148586-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+
+  <div class="templates">
+    <div data-template="source-tooltip">
+      <p>The source field accepts these formats:</p>
+      <ul>
+        <li>Imgur Album ID (<span class="monospace">4lbum1d</span>)</li>
+        <li>Imgur Album URL (<span class="monospace">imgur.com/a/4lbum1d</span>)</li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <header class="header">
+      <h1 class="site-title">contrast.li</h1>
+      <section class="controls">
+        <form class="sources" action="#" id="sourceForm">
+          <div class="field">
+            <label data-tooltip="source-tooltip" for="source1">Album 1</label>
+            <input type="text" id="source1" placeholder="imgur.com/a/4lbum1d" />
+          </div>
+          <div class="field">
+            <label data-tooltip="source-tooltip" for="source2">Album 2</label>
+            <input type="text" id="source2" placeholder="imgur.com/a/4lbum1d" />
+          </div>
+          <button id="submit" type="submit" class="button wide" disabled>Update</button>
+        </form>
+        <button id="share" class="button wide" disabled>Share</button>
+      </section>
+    </header>
+
+    <section class="viewer">
+      <div class="albums-container" id="albums"></div>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip"></div>
+
+  <script src="https://cdn.ravenjs.com/3.15.0/raven.min.js"></script>
+  <script>
+    Raven.config('https://29db574cdea94e648c798e8e3a466e3f@sentry.io/168109', {
+      release: '0.1.0',
+      environment: 'production'
+    }).install();
+  </script>
+
+  <!-- inject:js -->
+  <script src="/vendor/node_modules.js"></script>
+  <script src="/js/main.js"></script>
+  <!-- endinject -->
+</body>
+</html>
