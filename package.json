@@ -10,27 +10,17 @@
   "devDependencies": {
     "babelify": "^7.3.0",
     "browserify": "^14.0.0",
-    "express": "^4.14.1",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
     "gulp-env": "^0.4.0",
     "gulp-inject": "^3.0.0",
-    "gulp-minify-html": "^1.0.6",
-    "gulp-ng-html2js": "^0.2.2",
     "gulp-plumber": "^1.1.0",
     "gulp-replace": "^0.5.4",
-    "gulp-sass": "^3.1.0",
-    "gulp-sass-glob": "^1.0.8",
     "gulp-sourcemaps": "^2.4.1",
-    "gulp-stylint": "^4.0.0",
     "gulp-stylus": "^2.6.0",
     "gulp-sync": "^0.1.4",
-    "gulp-uglify": "^2.0.1",
     "gulp-util": "^3.0.8",
-    "gulp-wrap": "^0.13.0",
-    "main-bower-files": "^2.13.1",
-    "morgan": "^1.7.0",
     "stream-series": "^0.1.1",
     "tsify": "^3.0.1",
     "typescript": "^2.1.5",
@@ -40,6 +30,7 @@
   "dependencies": {
     "express": "^4.15.2",
     "memory-cache": "^0.1.6",
+    "morgan": "^1.7.0",
     "request": "^2.81.0"
   }
 }

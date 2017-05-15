@@ -49,7 +49,7 @@ gulp.task('js:source', Config.CSS_BUNDLES.map(title => {
 
 gulp.task('views', recipe('html', {
   cwd: './dist',
-  file: './client/html/**/*.html',
+  input: './client/html/**/*.html',
   sources: [[
     'vendor/**/*'
   ], [

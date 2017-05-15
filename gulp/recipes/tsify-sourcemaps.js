@@ -4,7 +4,6 @@ const babelify = require('babelify');
 const tsify = require('tsify');
 const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
 const buffer = require('vinyl-buffer');
 const gutil = require('gulp-util');
 const plumber = require('gulp-plumber');
