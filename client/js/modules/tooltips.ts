@@ -19,7 +19,7 @@ export function hide() {
 }
 
 export function initTooltips() {
-  tooltip = document.querySelector('#tooltip');
+  tooltip = <HTMLElement> document.querySelector('#tooltip');
 
   let triggers = Array.prototype.slice.call(document.querySelectorAll('[data-tooltip]'), 0);
   triggers.forEach(target => {

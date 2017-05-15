@@ -6,25 +6,6 @@ function parseId(string: string) {
 }
 
 function requestAlbumImages(sources) {
-  // return Promise.resolve([
-  //   {
-  //     title: 'Images - Originals',
-  //     images: Array.from({ length: 4 }, () => ({
-  //       title: 'The Colosseum',
-  //       link: `/images/original.jpg`,
-  //       description: 'This is an original image.'
-  //     }))
-  //   },
-  //   {
-  //     title: 'Images - Edits',
-  //     images: Array.from({ length: 4 }, () => ({
-  //       title: null,
-  //       link: `/images/edit.jpg`,
-  //       description: null
-  //     }))
-  //   }
-  // ]);
-
   let ids: Array<string> = sources.map(s => parseId(s));
   let requests: Array<Promise<HttpResponse>> = ids.map((id: string) => {
     return http.get(`/album/${id}`, {});

@@ -1,6 +1,6 @@
-import { initAlbums } from './albums';
-import { initTooltips } from './tooltips';
-import { initControls, setSources } from './controls';
+import { initAlbums } from 'modules/albums';
+import { initTooltips } from 'modules/tooltips';
+import { initControls, setSources } from 'modules/controls';
 
 document.addEventListener('DOMContentLoaded', () => {
   initAlbums();

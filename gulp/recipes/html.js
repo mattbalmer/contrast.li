@@ -23,7 +23,7 @@ module.exports = (config) => {
     
     return stream
       .pipe(inject(series.apply(series, streams), {
-        addRootSlash: false
+        addRootSlash: true
       }))
       .pipe(gulp.dest(config.output));
   }

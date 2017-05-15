@@ -5,8 +5,9 @@ const Config = require('./config');
 
 const routes = express.Router();
 
-routes.get('/album/:id',
-  proxy.to('https://api.imgur.com/3/album/:id', {
+routes.get('/album/:id', process.env.NODE_ENV == 'local'
+  ? require('./mock-albums')
+  : proxy.to('https://api.imgur.com/3/album/:id', {
     headers: {
       Authorization: `Client-ID ${Config.CLIENT_ID}`
     }

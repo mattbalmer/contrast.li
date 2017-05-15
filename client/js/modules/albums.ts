@@ -2,6 +2,7 @@ import { createElement } from 'utils/dom';
 import { diff, shared } from 'utils/strings';
 import { smoothScroll } from 'utils/window';
 import { debounce } from 'utils/functions';
+import analytics, { EventActions, EventCategories, EventLabels, Dimensions } from 'services/analytics';
 
 type Image = {
   src: string,
@@ -9,6 +10,7 @@ type Image = {
   label: string,
 }
 type Album = {
+  id: string,
   title: string,
   images: Array<{
     title: string,
@@ -152,6 +154,17 @@ function prevImage() {
 }
 
 export function renderAlbums(album1: Album, album2: Album) {
+  analytics.trackEvent({
+    action: EventActions.UPDATE,
+    category: EventCategories.VIEWER,
+    label: EventLabels.ALBUM_SOURCES,
+    dimensions: {
+      [Dimensions.SOURCES]: [album1.id, album2.id].join(','),
+      [Dimensions.SOURCE_ONE]: album1.id,
+      [Dimensions.SOURCE_TWO]: album2.id,
+    }
+  });
+  
   let count = Math.max(album1.images.length, album2.images.length);
   let labels = diff(album1.title, album2.title);
   pairEls = [];

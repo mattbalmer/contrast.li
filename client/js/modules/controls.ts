@@ -1,7 +1,8 @@
-import imgur from 'utils/imgur';
-import { renderAlbums } from './albums';
+import imgur from 'services/imgur';
+import { renderAlbums } from 'modules/albums';
 import { copyTextToClipboard } from 'utils/copy';
-import { show, hide } from './tooltips';
+import { show, hide } from 'modules/tooltips';
+import analytics, { EventActions, EventCategories, EventLabels, Dimensions } from 'services/analytics';
 
 let updateButton = <HTMLButtonElement> document.querySelector('#submit');
 let shareButton = <HTMLButtonElement> document.querySelector('#share');
@@ -29,12 +30,17 @@ function update(values) {
   imgur.requestAlbumImages([
       val1, val2,
     ])
-    .then(images => renderAlbums(images[0], images[1]))
-    .then(() => {
-      window.history.replaceState({
-        html: null,
-        pageTitle: 'contrast.li',
-      }, '', `/a/${val1},${val2}`);
+    .then(albums => {
+      if(albums[0] && albums[1]) {
+        renderAlbums(albums[0], albums[1]);
+
+        window.history.replaceState({
+          html: null,
+          pageTitle: 'contrast.li',
+        }, '', `/a/${albums[0].id},${albums[1].id}`);
+      } else {
+        window['Raven'].captureMessage(`Invalid album IDS: ${val1}, ${val2}`)
+      }
     });
 
   onInputChange();
@@ -60,6 +66,17 @@ export function initControls() {
 
     let val1 = source1Input.value;
     let val2 = source2Input.value;
+
+    analytics.trackEvent({
+      action: EventActions.CLICK,
+      category: EventCategories.CONTROLS,
+      label: EventLabels.UPDATE_BUTTON,
+      dimensions: {
+        [Dimensions.SOURCES]: [val1, val2].join(','),
+        [Dimensions.SOURCE_ONE]: val1,
+        [Dimensions.SOURCE_TWO]: val2,
+      }
+    });
 
     update([val1, val2]);
   });
