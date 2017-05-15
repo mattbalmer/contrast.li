@@ -441,7 +441,11 @@ function parseId(string) {
 function requestAlbumImages(sources) {
     let ids = sources.map(s => parseId(s));
     let requests = ids.map((id) => {
-        return http_1.default.get(`/album/${id}`, {});
+        return http_1.default.get(`/album/${id}`, {
+            params: {
+                force: window['forceCacheBuster'] || false
+            }
+        });
     });
     return Promise.all(requests)
         .then((responses) => {
