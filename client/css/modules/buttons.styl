@@ -1,0 +1,29 @@
+.button
+  user-select none
+  cursor pointer
+  display inline-block
+  outline 0
+  border none
+  padding 6px 18px
+  text-align center
+  box-sizing border-box
+  border-radius 3px
+  text-decoration none
+  color $whitegray
+  background-color $green
+  font-size 15px
+
+  &[disabled]
+    cursor not-allowed
+    background-color rgba($whitegray, .5)
+    color $whitegray
+
+  &:not([disabled])
+    &:hover, &:focus
+      background-color $green-hover
+      text-decoration none
+      color #fff
+
+  &.wide
+    padding-left 36px
+    padding-right 36px
